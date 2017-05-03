@@ -49,7 +49,7 @@ own_window_hints below,skip_taskbar,sticky
 ### Additional
 Install ```curl```, ```lm-sensors```, ```hddtemp``` packages.
 
-Now download included ```.conkyrc``` folder and place in
+Now download included ```conky``` folder. Rename it to ```.conky```  and place in
 ```/home/user``` directory (replace with previous ```.conkyrc``` folder)
 Open ```conky-manager``` and enable widgets
 
