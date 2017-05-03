@@ -29,20 +29,24 @@ A lot of conkyrc files can be found around the net, check google and deviantart 
 
 ### Fixing isssues with KDE
 Simply open any ```.conkyrc``` file and replace
+
 ```own_window yes
 own_window_transparent yes
 own_window_type normal
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager```
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+```
 
-with
+##### with,
+
 ```own_window yes
 own_window_type dock
 own_window_argb_visual yes
 own_window_transparent yes
-own_window_hints below,skip_taskbar,sticky```
+own_window_hints below,skip_taskbar,sticky
+```
 
 ### Additional
-Install ```curl``` ```lm-sensors``` ```hddtemp``` packages.
+Install ```curl```, ```lm-sensors```, ```hddtemp``` packages.
 
 Now download included ```.conkyrc``` folder and place in
 ```/home/user``` directory (replace with previous ```.conkyrc``` folder)
