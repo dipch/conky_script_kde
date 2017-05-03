@@ -51,5 +51,5 @@ Install ```curl```, ```lm-sensors```, ```hddtemp``` packages.
 Now download included ```.conkyrc``` folder and place in
 ```/home/user``` directory (replace with previous ```.conkyrc``` folder)
 Open ```conky-manager``` and enable widgets
-VOILA!!!
-VOILA!
+
+VOILA!!
