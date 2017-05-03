@@ -1,0 +1,80 @@
+###### Conky for Debian Gnu/Linux and derivatives - Version 2
+# For minimum resolution 1360x720
+# By Gustavo Valério
+# www.gustavovalerio.com
+# In 5 DE DEZEMBRO DE 2016
+# https://github.com/gustavovalerio/Conky
+
+##### LICENSE GPL V 2.1
+# Free for use and modification
+# Keep the credits
+
+##### DEPENDENCIES
+# Font Coda: https://github.com/gustavovalerio/Conky/blob/master/Fonts/Coda/Coda.ttf
+# Font Awesome: https://github.com/gustavovalerio/Conky/blob/master/Fonts/Awesome/FontAwesome.otf
+# Font Audiowide: https://github.com/gustavovalerio/Conky/blob/master/Fonts/Audiowide/Audiowide.ttf
+# Font Open 24 Display St: https://github.com/gustavovalerio/Conky/blob/master/Fonts/Open%2024%20display/Open24DisplaySt.ttf
+# Font ConkyWind: https://github.com/gustavovalerio/Conky/blob/master/Fonts/ConkyWind/ConkyWind.otf
+# Package conky-all (apt install conky-all)
+# Package lm-sensors (apt install lm-sensors)
+
+##### INSTALLATION
+# Install packages conky-all and lm-sensors (apt install conky-all lm-sensors -y).
+# Execute sensors-detect on root terminal and press ENTER until finished.
+# Choose the file according to your resolution
+# Rename the file for .conkyrc and move for your user folder on /home. 
+
+##### BASICS SETTINGS
+background no
+use_xft yes
+xftfont Coda:size=10
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale yes
+temperature_unit celsius
+default_color cyan
+
+##### WINDOW SETTINGS
+own_window yes 
+own_window_type dock 
+own_window_argb_visual yes
+own_window_transparent yes
+own_window_hints below,skip_taskbar,sticky
+double_buffer yes
+minimum_size 800 0
+maximum_width 1340
+
+##### BORDERS AND SHADOWS
+default_shade_color black
+draw_shades yes
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+
+##### ALIGNMENT
+alignment middle_middle
+gap_y -165
+gap_x -315
+
+own_window_argb_value 0
+own_window_colour 000000
+TEXT
+
+# COLUMN PROCESSOR
+${font Fontawesome:size=10}$font OS: Manjaro ${execi cat /etc/issue.net | sed 's#s#S#g'}
+${font Fontawesome:size=10}$font KERNEL: $kernel
+${font Fontawesome:size=8}$font WM: KWin
+${font Fontawesome:size=8}$font Shell: bash 4.4.12
+${font Fontawesome:size=10}$font UPTIME: $uptime_short
+${font Fontawesome:size=10}$font PROCESSES: $processes
+${font Fontawesome:size=10}$font THREADS: $running_threads
+${font Fontawesome:size=8}$font Ram: 4GB
+${font Fontawesome:size=8}$font TEMPERATURE: ${execi 5 sensors | grep id | awk '{ print $4 }' | sed 's#+##'}
+${font Fontawesome:size=8}$font CPU: Intel Core i3-3217U @ 4x 1.8GHz
+${font Fontawesome:size=10}$font GPU0: NVIDIA GeForce GT720 ${execi cat /etc/issue.net | sed 's#s#S#g'}
+${font Fontawesome:size=10}$font GPU1: Intel Ivybridge 
+

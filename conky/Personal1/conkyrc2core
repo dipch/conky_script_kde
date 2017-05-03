@@ -1,0 +1,123 @@
+# Conky settings #
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+#imlib_cache_size 0
+
+temperature_unit fahrenheit
+
+# Window specifications #
+own_window yes
+own_window_type dock
+own_window_argb_visual yes
+own_window_transparent yes
+own_window_hints below,skip_taskbar,sticky
+
+
+
+
+border_inner_margin 0
+border_outer_margin 5
+
+minimum_size 250 300
+maximum_width 250
+
+alignment top_left
+gap_x 10
+gap_y 20
+
+# Graphics settings #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+
+# Text settings #
+use_xft yes
+xftfont caviar dreams:size=10
+xftalpha 1
+
+uppercase no
+
+temperature_unit celsius
+
+default_color cyan
+
+# Lua Load  #
+lua_load ./clock01_rings.lua
+lua_draw_hook_pre clock_rings
+
+own_window_argb_value 0
+own_window_argb_visual yes
+own_window_colour 000000
+TEXT
+#----------------------------------------------------------------------------------------------------------------------------------------
+#					         Time and date 
+#----------------------------------------------------------------------------------------------------------------------------------------
+${voffset 7}${font Radio Space:size=16}${color cyan}${time %A}${font}$color${font Radio Space:size=38}${goto 167}${voffset -8} ${time %e}${font}
+${font Radio Space:size=18}${voffset -30}${time %b}${font}${voffset -3} ${font Radio Space:size=20}${time %Y}${font}${color cyan} ${hr 1}
+#----------------------------------------------------------------------------------------------------------------------------------------
+#					         Battery Circle 
+#----------------------------------------------------------------------------------------------------------------------------------------
+${color FFFFFF}${goto 209}${voffset 34}${battery_percent}%
+${color cyan}${goto 202}${voffset 25}Battery
+#----------------------------------------------------------------------------------------------------------------------------------------
+#						Weather 
+#----------------------------------------------------------------------------------------------------------------------------------------
+${font conkyweather:size=35}${color FFFFFF}${goto 200}${voffset 20}${execpi 6000  sed -n '2p' ~/.conky/accu_weather/rss/weather}$color${font}${font Radio Space:size=11}${color cyan}${goto 202}${voffset 12}HOME
+${execi 600 bash ~/.conky/accu_weather/rss/acc_rss}${font Radio Space:size=15}${goto 201}${voffset -4}${execpi 600 sed -n '1p' ~/.conky/accu_weather/rss/weather|awk '{print $NF}'}${font}$color
+${font caviar dreams:size=8}${goto 47}${voffset 5}Uptime: ${uptime_short}
+#----------------------------------------------------------------------------------------------------------------------------------------
+#					           CPU usage 
+#----------------------------------------------------------------------------------------------------------------------------------------
+${color cyan}${hr 1}$color
+${color cyan}${voffset 6}Temp: $color ${acpitemp}°C
+${color cyan}${voffset 6}Processes:$color $processes	
+${color cyan}${voffset 6}Running: $color  $running_processes${goto 116}${voffset 8}${cpu cpu0}% ${color cyan}${goto 116}${voffset 13}CPU1$color${goto 191}${voffset -12}${cpu cpu1}% ${color cyan}${goto 191}${voffset 12}CPU2$color
+${color cyan}${voffset -12}FREQ:$color ${freq}MHz
+${color cyan}${voffset 6}Load:$color ${loadavg}
+#----------------------------------------------------------------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#					DISK/RAM/SWAP usage
+#----------------------------------------------------------------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#					   Running processes
+#----------------------------------------------------------------------------------------------------------------------------------------
+${color cyan}${voffset 1} ${hr 1}
+${color cyan}${voffset 5}NAME${goto 122}PID${goto 163}CPU%${goto 210}MEM%$color${voffset 5}
+${top name 1}${goto 115}${top pid 1}${goto 160}${top cpu 1}${goto 205}${top mem 1}
+${top name 2}${goto 115}${top pid 2}${goto 160}${top cpu 2}${goto 205}${top mem 2}
+${top name 3}${goto 115}${top pid 3}${goto 160}${top cpu 3}${goto 205}${top mem 3}
+${top name 5}${goto 115}${top pid 5}${goto 160}${top cpu 5}${goto 205}${top mem 5}
+${top name 6}${goto 115}${top pid 6}${goto 160}${top cpu 6}${goto 205}${top mem 6}
+${top name 7}${goto 115}${top pid 7}${goto 160}${top cpu 7}${goto 205}${top mem 7}
+${top name 8}${goto 115}${top pid 8}${goto 160}${top cpu 8}${goto 205}${top mem 8}
+#--------------------------------------------------------------------
+--------------------------------------------------------------------
+${color cyan}${voffset 2}${hr 1}
+${color FFFFFF}${goto 7}${voffset 39}${fs_used_perc /}%
+${color cyan}${goto 7}DISK
+${color FFFFFF}${goto 102}${voffset -27}${memperc}%
+${color cyan}${goto 102}RAM
+${color FFFFFF}${goto 192}${voffset -26}${swapperc}%
+${color cyan}${goto 191}SWAP
+#					     Computer info
+#----------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------
+#						Logging
+#----------------------------------------------------------------------------------------------------------------------------------------
+${color cyan}${hr 1}$color
+${color cyan}${alignc}SYSLOG:$color
+${color cyan}${hr 1}$color
+${execi 2 tail -n5 /var/log/ | awk '{print " ",$5,$6,$7,$8,$9,$10}' | fold -w50}
