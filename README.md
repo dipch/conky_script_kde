@@ -2,6 +2,7 @@
 Awesome conky scripts modified for KDE 
 Conky is a system monitor software for the X Window System. It is available for GNU/Linux and FreeBSD. It is free software released under the terms of the GPL license. Conky Manager offers a simple GUI for managing and customizing conkys. Additional theme packs are available, too. KDE often conflicts with default ```conkyrc``` file. So, KDE users need to slightly change their conkyrc scripts. Here is procedure for installing/configuring ```conky``` ```conky-manager``` in KDE.  
 
+![My desktop](https://github.com/charbaak/conky_script_kde/blob/master/Preview.png)
 # Installing Conky
 ### For Ubuntu/Linux Mint
 ```sudo apt-get install conky-all``` 
@@ -52,4 +53,5 @@ Now download included ```.conkyrc``` folder and place in
 ```/home/user``` directory (replace with previous ```.conkyrc``` folder)
 Open ```conky-manager``` and enable widgets
 
-VOILA!!
+##### VOILA!
+##### Feel the geek look.
